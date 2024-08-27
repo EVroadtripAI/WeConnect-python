@@ -20,6 +20,7 @@ from vw_carnet.auth.openid_session import AccessType
 
 from vw_carnet.auth.vw_web_session import VWWebSession
 from vw_carnet.errors import APICompatibilityError, AuthentificationError, RetrievalError, TemporaryAuthentificationError
+from vw_carnet.config import BASE_URL
 
 
 LOG = logging.getLogger("weconnect")
@@ -28,7 +29,7 @@ LOG = logging.getLogger("weconnect")
 class MyCupraSession(VWWebSession):
     def __init__(self, sessionuser, **kwargs):
         super(MyCupraSession, self).__init__(client_id='3c756d46-f1ba-4d78-9f9a-cff0d5292d51@apps_vw-dilab_com',
-                                             refresh_url='https://identity.vwgroup.io/oidc/v1/token',
+                                             refresh_url=BASE_URL + '/oidc/v1/token',
                                              scope='openid profile nickname birthdate phone',
                                              redirect_uri='cupra://oauth-callback',
                                              state=None,
@@ -44,15 +45,15 @@ class MyCupraSession(VWWebSession):
         })
 
     def login(self):
-        authorizationUrl = self.authorizationUrl(url='https://identity.vwgroup.io/oidc/v1/authorize')
+        authorizationUrl = self.authorizationUrl(url=BASE_URL + '/oidc/v1/authorize')
         response = self.doWebAuth(authorizationUrl)
-        self.fetchTokens('https://identity.vwgroup.io/oidc/v1/token',
+        self.fetchTokens(BASE_URL + '/oidc/v1/token',
                          authorization_response=response
                          )
 
     def refresh(self):
         self.refreshTokens(
-            'https://identity.vwgroup.io/oidc/v1/token',
+            BASE_URL + '/oidc/v1/token',
         )
 
     def doWebAuth(self, authorizationUrl):  # noqa: C901
@@ -81,7 +82,7 @@ class MyCupraSession(VWWebSession):
             elif loginFormResponse.status_code == requests.codes['internal_server_error']:
                 raise RetrievalError('Temporary server error during login')
             else:
-                raise APICompatibilityError('Retrieving credentials page was not successfull,'
+                raise APICompatibilityError('Retrieving credentials page was not successful,'
                                             f' status code: {loginFormResponse.status_code}')
 
         # Find login form on page to obtain inputs
@@ -106,7 +107,7 @@ class MyCupraSession(VWWebSession):
         formData['email'] = self.sessionuser.username
 
         # build url from form action
-        login2Url: str = 'https://identity.vwgroup.io' + target
+        login2Url: str = BASE_URL + target
 
         loginHeadersForm: CaseInsensitiveDict = websession.headers.copy()
         loginHeadersForm['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -117,7 +118,7 @@ class MyCupraSession(VWWebSession):
         if login2Response.status_code != requests.codes['ok']:  # pylint: disable=E1101
             if login2Response.status_code == requests.codes['internal_server_error']:
                 raise RetrievalError('Temporary server error during login')
-            raise APICompatibilityError('Retrieving credentials page was not successfull,'
+            raise APICompatibilityError('Retrieving credentials page was not successful,'
                                         f' status code: {login2Response.status_code}')
 
         credentialsTemplateRegex = r'<script>\s+window\._IDK\s+=\s+\{\s' \
@@ -158,7 +159,7 @@ class MyCupraSession(VWWebSession):
         if not all(x in ['_csrf', 'relayState', 'hmac', 'email', 'password'] for x in form2Data):
             raise APICompatibilityError('Could not find all required input fields in login page')
 
-        login3Url = f'https://identity.vwgroup.io/signin-service/v1/{self.client_id}/{target}'
+        login3Url = BASE_URL + f'/signin-service/v1/{self.client_id}/{target}'
 
         # Post form content and retrieve userId in forwarding Location
         login3Response: requests.Response = websession.post(login3Url, headers=loginHeadersForm, data=form2Data, allow_redirects=False)

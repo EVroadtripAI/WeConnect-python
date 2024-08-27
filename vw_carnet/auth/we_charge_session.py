@@ -20,6 +20,7 @@ from requests.models import CaseInsensitiveDict
 from vw_carnet.auth.openid_session import AccessType
 from vw_carnet.auth.vw_web_session import VWWebSession
 from vw_carnet.errors import APICompatibilityError, AuthentificationError, RetrievalError, TemporaryAuthentificationError
+from vw_carnet.config import BASE_URL
 
 LOG = logging.getLogger("weconnect")
 
@@ -27,7 +28,7 @@ LOG = logging.getLogger("weconnect")
 class WeChargeSession(VWWebSession):
     def __init__(self, sessionuser, **kwargs):
         super(WeChargeSession, self).__init__(client_id='0fa5ae01-ebc0-4901-a2aa-4dd60572ea0e@apps_vw-dilab_com',
-                                              refresh_url='https://identity.vwgroup.io/oidc/v1/token',
+                                              refresh_url=BASE_URL + '/oidc/v1/token',
                                               scope='openid profile address email cars vin',
                                               redirect_uri='wecharge://authenticated',
                                               state=None,
@@ -51,7 +52,7 @@ class WeChargeSession(VWWebSession):
 
     def login(self):
         super(WeChargeSession, self).login()
-        authorizationUrl = self.authorizationUrl(url='https://identity.vwgroup.io/oidc/v1/authorize')
+        authorizationUrl = self.authorizationUrl(url=BASE_URL + '/oidc/v1/authorize')
         response = self.doWebAuth(authorizationUrl)
         self.fetchTokens('https://wecharge.apps.emea.vwapps.io/user-identity/v1/identity/login',
                          authorization_response=response)
@@ -92,7 +93,7 @@ class WeChargeSession(VWWebSession):
             elif loginFormResponse.status_code == requests.codes['internal_server_error']:
                 raise RetrievalError('Temporary server error during login')
             else:
-                raise APICompatibilityError('Retrieving credentials page was not successfull,'
+                raise APICompatibilityError('Retrieving credentials page was not successful,'
                                             f' status code: {loginFormResponse.status_code}')
         # Find login form on page to obtain inputs
         emailFormRegex = r'<form.+id=\"emailPasswordForm\".*action=\"(?P<formAction>[^\"]+)\"[^>]*>' \
@@ -116,7 +117,7 @@ class WeChargeSession(VWWebSession):
         formData['identifier'] = self.sessionuser.username
 
         # build url from form action
-        login2Url: str = 'https://identity.vwgroup.io' + target
+        login2Url: str = BASE_URL + target
 
         loginHeadersForm: CaseInsensitiveDict = websession.headers.copy()
         loginHeadersForm['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -127,7 +128,7 @@ class WeChargeSession(VWWebSession):
         if login2Response.status_code != requests.codes['ok']:  # pylint: disable=E1101
             if login2Response.status_code == requests.codes['internal_server_error']:
                 raise RetrievalError('Temporary server error during login')
-            raise AuthentificationError('Retrieving credentials page was not successfull,'
+            raise AuthentificationError('Retrieving credentials page was not successful,'
                                         f' status code: {login2Response.status_code}')
 
         credentialsTemplateRegex = r'<script>\s+window\._IDK\s+=\s+\{\s' \
@@ -168,7 +169,7 @@ class WeChargeSession(VWWebSession):
         if not all(x in ['_csrf', 'relayState', 'hmac', 'email', 'password'] for x in form2Data):
             raise AuthentificationError('Could not find all required input fields in credentials page')
 
-        login3Url = f'https://identity.vwgroup.io/signin-service/v1/{self.client_id}/{target}'
+        login3Url = BASE_URL + f'/signin-service/v1/{self.client_id}/{target}'
 
         # Post form content and retrieve userId in forwarding Location
         login3Response: requests.Response = websession.post(login3Url, headers=loginHeadersForm, data=form2Data, allow_redirects=False)
