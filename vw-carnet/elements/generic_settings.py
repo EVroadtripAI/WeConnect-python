@@ -4,11 +4,11 @@ import logging
 import json
 import requests
 
-from weconnect.addressable import AddressableLeaf, ChangeableAttribute, AliasChangeableAttribute
-from weconnect.elements.generic_status import GenericStatus
-from weconnect.elements.error import Error
-from weconnect.errors import SetterError
-from weconnect.domain import Domain
+from vw_carnet.addressable import AddressableLeaf, ChangeableAttribute, AliasChangeableAttribute
+from vw_carnet.elements.generic_status import GenericStatus
+from vw_carnet.elements.error import Error
+from vw_carnet.errors import SetterError
+from vw_carnet.domain import Domain
 
 LOG = logging.getLogger("weconnect")
 

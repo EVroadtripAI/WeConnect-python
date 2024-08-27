@@ -2,19 +2,19 @@ import logging
 import json
 import requests
 
-from weconnect.addressable import AddressableObject, ChangeableAttribute
-from weconnect.elements.control_operation import ControlOperation, AccessControlOperation, HonkAndFlashControlOperation
-from weconnect.elements.charging_settings import ChargingSettings
-from weconnect.elements.climatization_settings import ClimatizationSettings
-from weconnect.elements.error import Error
-from weconnect.elements.window_heating_status import WindowHeatingStatus
-from weconnect.elements.access_status import AccessStatus
-from weconnect.elements.parking_position import ParkingPosition
-from weconnect.elements.activeventilation_timer import ActiveVentilationTimer
-from weconnect.elements.auxiliaryheating_timer import AuxiliaryHeatingTimer
-from weconnect.errors import ControlError
-from weconnect.util import celsiusToKelvin, farenheitToKelvin
-from weconnect.domain import Domain
+from vw_carnet.addressable import AddressableObject, ChangeableAttribute
+from vw_carnet.elements.control_operation import ControlOperation, AccessControlOperation, HonkAndFlashControlOperation
+from vw_carnet.elements.charging_settings import ChargingSettings
+from vw_carnet.elements.climatization_settings import ClimatizationSettings
+from vw_carnet.elements.error import Error
+from vw_carnet.elements.window_heating_status import WindowHeatingStatus
+from vw_carnet.elements.access_status import AccessStatus
+from vw_carnet.elements.parking_position import ParkingPosition
+from vw_carnet.elements.activeventilation_timer import ActiveVentilationTimer
+from vw_carnet.elements.auxiliaryheating_timer import AuxiliaryHeatingTimer
+from vw_carnet.errors import ControlError
+from vw_carnet.util import celsiusToKelvin, farenheitToKelvin
+from vw_carnet.domain import Domain
 
 LOG = logging.getLogger("weconnect")
 

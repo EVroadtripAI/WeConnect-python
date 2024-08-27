@@ -1,8 +1,8 @@
 import argparse
 
-from weconnect import weconnect
+from vw_carnet import weconnect
 
-from weconnect.elements.control_operation import ControlOperation
+from vw_carnet.elements.control_operation import ControlOperation
 
 
 def main():

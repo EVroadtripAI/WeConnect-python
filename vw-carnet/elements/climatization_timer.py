@@ -1,9 +1,9 @@
 from datetime import datetime
 import logging
 
-from weconnect.addressable import AddressableAttribute, AddressableDict
-from weconnect.elements.generic_status import GenericStatus
-from weconnect.elements.timer import Timer
+from vw_carnet.addressable import AddressableAttribute, AddressableDict
+from vw_carnet.elements.generic_status import GenericStatus
+from vw_carnet.elements.timer import Timer
 
 LOG = logging.getLogger("weconnect")
 

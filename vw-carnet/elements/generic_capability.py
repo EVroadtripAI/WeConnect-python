@@ -2,7 +2,7 @@ from enum import IntEnum
 import logging
 from datetime import datetime
 
-from weconnect.addressable import AddressableObject, AddressableAttribute
+from vw_carnet.addressable import AddressableObject, AddressableAttribute
 
 LOG = logging.getLogger("weconnect")
 

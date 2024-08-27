@@ -1,7 +1,7 @@
 import logging
 from enum import Enum
 
-from weconnect.addressable import AddressableObject, AddressableAttribute, AddressableList
+from vw_carnet.addressable import AddressableObject, AddressableAttribute, AddressableList
 
 LOG = logging.getLogger("weconnect")
 

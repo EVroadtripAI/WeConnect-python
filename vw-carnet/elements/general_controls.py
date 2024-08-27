@@ -2,8 +2,8 @@ import re
 import logging
 import requests
 
-from weconnect.addressable import AddressableObject, ChangeableAttribute
-from weconnect.errors import ControlError, SetterError
+from vw_carnet.addressable import AddressableObject, ChangeableAttribute
+from vw_carnet.errors import ControlError, SetterError
 
 LOG = logging.getLogger("weconnect")
 

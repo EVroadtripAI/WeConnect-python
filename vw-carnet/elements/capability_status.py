@@ -1,8 +1,8 @@
 import logging
 
-from weconnect.addressable import AddressableDict
-from weconnect.elements.generic_status import GenericStatus
-from weconnect.elements.generic_capability import GenericCapability
+from vw_carnet.addressable import AddressableDict
+from vw_carnet.elements.generic_status import GenericStatus
+from vw_carnet.elements.generic_capability import GenericCapability
 
 LOG = logging.getLogger("weconnect")
 

@@ -2,10 +2,10 @@ from enum import Enum
 from datetime import datetime
 import logging
 
-from weconnect.addressable import AddressableAttribute, AddressableDict, AddressableObject
-from weconnect.elements.generic_status import GenericStatus
+from vw_carnet.addressable import AddressableAttribute, AddressableDict, AddressableObject
+from vw_carnet.elements.generic_status import GenericStatus
 
-from weconnect.util import robustTimeParse, toBool
+from vw_carnet.util import robustTimeParse, toBool
 
 LOG = logging.getLogger("weconnect")
 

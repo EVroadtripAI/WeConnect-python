@@ -1,6 +1,6 @@
 import argparse
 
-from weconnect import weconnect
+from vw_carnet import weconnect
 
 
 def main():

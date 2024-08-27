@@ -4,11 +4,11 @@ import logging
 
 from datetime import datetime
 
-from weconnect.addressable import AddressableObject, AddressableAttribute
-from weconnect.elements.enums import SpinState
+from vw_carnet.addressable import AddressableObject, AddressableAttribute
+from vw_carnet.elements.enums import SpinState
 
 if TYPE_CHECKING:
-    from weconnect.elements.generic_status import GenericStatus
+    from vw_carnet.elements.generic_status import GenericStatus
 
 LOG: logging.Logger = logging.getLogger("weconnect")
 

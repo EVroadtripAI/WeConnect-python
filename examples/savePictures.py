@@ -2,7 +2,7 @@ import argparse
 
 from PIL import Image
 
-from weconnect import weconnect, addressable
+from vw_carnet import weconnect, addressable
 
 
 def main():

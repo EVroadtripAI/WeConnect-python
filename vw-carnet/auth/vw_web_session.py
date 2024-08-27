@@ -1,4 +1,4 @@
-from weconnect.auth.openid_session import OpenIDSession
+from vw_carnet.auth.openid_session import OpenIDSession
 
 
 class VWWebSession(OpenIDSession):

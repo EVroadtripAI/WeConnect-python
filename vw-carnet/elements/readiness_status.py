@@ -1,9 +1,9 @@
 from enum import Enum
 import logging
 
-from weconnect.addressable import AddressableObject, AddressableAttribute
-from weconnect.elements.generic_status import GenericStatus
-from weconnect.util import toBool
+from vw_carnet.addressable import AddressableObject, AddressableAttribute
+from vw_carnet.elements.generic_status import GenericStatus
+from vw_carnet.util import toBool
 
 LOG = logging.getLogger("weconnect")
 

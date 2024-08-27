@@ -1,10 +1,10 @@
 from datetime import datetime, time
 import logging
 
-from weconnect.addressable import AddressableAttribute, AddressableDict, AddressableObject
-from weconnect.elements.enums import UnlockPlugState, TargetSOCReachable
-from weconnect.elements.generic_settings import GenericSettings
-from weconnect.elements.timer import Timer
+from vw_carnet.addressable import AddressableAttribute, AddressableDict, AddressableObject
+from vw_carnet.elements.enums import UnlockPlugState, TargetSOCReachable
+from vw_carnet.elements.generic_settings import GenericSettings
+from vw_carnet.elements.timer import Timer
 
 LOG = logging.getLogger("weconnect")
 

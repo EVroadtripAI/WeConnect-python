@@ -1,6 +1,6 @@
 import pytest
 
-from weconnect import addressable
+from vw_carnet import addressable
 
 
 def test_AddressableLeafGetObservers():

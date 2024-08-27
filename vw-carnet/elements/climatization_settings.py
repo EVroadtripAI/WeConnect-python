@@ -5,13 +5,13 @@ import logging
 import json
 import requests
 
-from weconnect.elements.error import Error
-from weconnect.errors import SetterError
-from weconnect.domain import Domain
+from vw_carnet.elements.error import Error
+from vw_carnet.errors import SetterError
+from vw_carnet.domain import Domain
 
-from weconnect.addressable import AddressableLeaf, ChangeableAttribute, AddressableAttribute, AliasChangeableAttribute
-from weconnect.elements.generic_settings import GenericSettings
-from weconnect.util import celsiusToKelvin, farenheitToKelvin
+from vw_carnet.addressable import AddressableLeaf, ChangeableAttribute, AddressableAttribute, AliasChangeableAttribute
+from vw_carnet.elements.generic_settings import GenericSettings
+from vw_carnet.util import celsiusToKelvin, farenheitToKelvin
 
 LOG = logging.getLogger("weconnect")
 

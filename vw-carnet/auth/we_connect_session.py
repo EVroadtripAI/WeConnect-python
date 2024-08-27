@@ -15,11 +15,11 @@ from oauthlib.oauth2 import InsecureTransportError
 from oauthlib.oauth2 import is_secure_transport
 
 from requests.models import CaseInsensitiveDict
-from weconnect.auth.openid_session import AccessType
+from vw_carnet.auth.openid_session import AccessType
 
 
-from weconnect.auth.vw_web_session import VWWebSession
-from weconnect.errors import APICompatibilityError, AuthentificationError, RetrievalError, TemporaryAuthentificationError
+from vw_carnet.auth.vw_web_session import VWWebSession
+from vw_carnet.errors import APICompatibilityError, AuthentificationError, RetrievalError, TemporaryAuthentificationError
 
 
 LOG = logging.getLogger("weconnect")
@@ -358,4 +358,4 @@ class WeConnectSession(VWWebSession):
                 self.token["refresh_token"] = refresh_token
             return self.token
         else:
-            raise RetrievalError(f'Status Code from WeConnect while refreshing tokens was: {tokenResponse.status_code}')
+            raise RetrievalError(f'Status Code from vw_carnet while refreshing tokens was: {tokenResponse.status_code}')

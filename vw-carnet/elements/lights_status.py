@@ -1,8 +1,8 @@
 from enum import Enum
 import logging
 
-from weconnect.addressable import AddressableAttribute, AddressableObject, AddressableDict
-from weconnect.elements.generic_status import GenericStatus
+from vw_carnet.addressable import AddressableAttribute, AddressableObject, AddressableDict
+from vw_carnet.elements.generic_status import GenericStatus
 
 LOG = logging.getLogger("weconnect")
 

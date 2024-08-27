@@ -1,9 +1,9 @@
 from datetime import datetime
 import logging
 
-from weconnect.addressable import AddressableObject, AddressableAttribute, AddressableDict
+from vw_carnet.addressable import AddressableObject, AddressableAttribute, AddressableDict
 
-from weconnect.util import robustTimeParse, toBool
+from vw_carnet.util import robustTimeParse, toBool
 
 LOG = logging.getLogger("weconnect")
 

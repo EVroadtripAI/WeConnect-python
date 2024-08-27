@@ -3,8 +3,8 @@ from enum import Enum
 
 from datetime import datetime
 
-from weconnect.addressable import AddressableObject, AddressableAttribute
-from weconnect.elements.enums import CarType
+from vw_carnet.addressable import AddressableObject, AddressableAttribute
+from vw_carnet.elements.enums import CarType
 
 LOG = logging.getLogger("weconnect")
 

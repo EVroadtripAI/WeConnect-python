@@ -11,15 +11,15 @@ from datetime import datetime, timedelta
 
 import requests
 
-from weconnect.auth.session_manager import SessionManager, Service, SessionUser
-from weconnect.elements.vehicle import Vehicle
-from weconnect.domain import Domain
-from weconnect.elements.charging_station import ChargingStation
-from weconnect.elements.general_controls import GeneralControls
-from weconnect.addressable import AddressableLeaf, AddressableObject, AddressableDict
-from weconnect.errors import RetrievalError, TooManyRequestsError
-from weconnect.weconnect_errors import ErrorEventType
-from weconnect.util import ExtendedEncoder
+from vw_carnet.auth.session_manager import SessionManager, Service, SessionUser
+from vw_carnet.elements.vehicle import Vehicle
+from vw_carnet.domain import Domain
+from vw_carnet.elements.charging_station import ChargingStation
+from vw_carnet.elements.general_controls import GeneralControls
+from vw_carnet.addressable import AddressableLeaf, AddressableObject, AddressableDict
+from vw_carnet.errors import RetrievalError, TooManyRequestsError
+from vw_carnet.weconnect_errors import ErrorEventType
+from vw_carnet.util import ExtendedEncoder
 
 LOG = logging.getLogger("weconnect")
 
@@ -53,7 +53,7 @@ class WeConnect(AddressableObject):  # pylint: disable=too-many-instance-attribu
             username (str): Username used with WeConnect. This is your volkswagen user.
             password (str): Password used with WeConnect. This is your volkswagen password.
             tokenfile (str, optional): Optional file to read/write token from/to. Defaults to None.
-            updateAfterLogin (bool, optional): Update data from WeConnect after logging in (If set to false, update needs to be called manually).
+            updateAfterLogin (bool, optional): Update data from vw_carnet after logging in (If set to false, update needs to be called manually).
             Defaults to True.
             loginOnInit (bool, optional): Login after initialization (If set to false, login needs to be called manually). Defaults to True.
             fixAPI (bool, optional): Automatically fix known issues with the WeConnect responses. Defaults to True.

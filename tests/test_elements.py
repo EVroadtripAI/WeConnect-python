@@ -3,7 +3,7 @@
 
 # import pytest
 
-# from weconnect import elements
+# from vw_carnet import elements
 
 # SCRIPTLOC = os.path.dirname(__file__)
 

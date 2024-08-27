@@ -4,10 +4,10 @@ from threading import Timer
 import logging
 
 if TYPE_CHECKING:
-    from weconnect.elements.vehicle import Vehicle
+    from vw_carnet.elements.vehicle import Vehicle
 
-from weconnect.elements.generic_status import GenericStatus
-from weconnect.domain import Domain
+from vw_carnet.elements.generic_status import GenericStatus
+from vw_carnet.domain import Domain
 
 
 LOG = logging.getLogger("weconnect")

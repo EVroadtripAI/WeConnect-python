@@ -11,10 +11,10 @@ from oauthlib.oauth2.rfc6749.parameters import parse_authorization_code_response
 
 from requests.adapters import HTTPAdapter
 
-from weconnect.auth.auth_util import addBearerAuthHeader
-from weconnect.errors import AuthentificationError, RetrievalError
+from vw_carnet.auth.auth_util import addBearerAuthHeader
+from vw_carnet.errors import AuthentificationError, RetrievalError
 
-from weconnect.elements.helpers.blacklist_retry import BlacklistRetry
+from vw_carnet.elements.helpers.blacklist_retry import BlacklistRetry
 
 
 LOG = logging.getLogger("weconnect")

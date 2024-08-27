@@ -7,9 +7,9 @@ import logging
 
 from requests import Session
 
-from weconnect.auth.we_connect_session import WeConnectSession
-from weconnect.auth.we_charge_session import WeChargeSession
-from weconnect.auth.my_cupra_session import MyCupraSession
+from vw_carnet.auth.we_connect_session import WeConnectSession
+from vw_carnet.auth.we_charge_session import WeChargeSession
+from vw_carnet.auth.my_cupra_session import MyCupraSession
 
 LOG = logging.getLogger("weconnect")
 

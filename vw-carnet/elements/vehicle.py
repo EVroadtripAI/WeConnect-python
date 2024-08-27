@@ -8,54 +8,54 @@ import base64
 import io
 import logging
 
-from weconnect.elements.generic_status import GenericStatus
+from vw_carnet.elements.generic_status import GenericStatus
 
 from requests import exceptions, codes
 
-from weconnect.addressable import AddressableObject, AddressableAttribute, AddressableDict, AddressableList
+from vw_carnet.addressable import AddressableObject, AddressableAttribute, AddressableDict, AddressableList
 if TYPE_CHECKING:
-    from weconnect.weconnect import WeConnect
-from weconnect.elements.generic_capability import GenericCapability
-from weconnect.elements.generic_request_status import GenericRequestStatus
-from weconnect.elements.controls import Controls
-from weconnect.elements.access_status import AccessStatus
-from weconnect.elements.activeventilation_timer import ActiveVentilationTimer
-from weconnect.elements.auxiliaryheating_timer import AuxiliaryHeatingTimer
-from weconnect.elements.auxiliaryheating_status import AuxiliaryHeatingStatus
-from weconnect.elements.battery_status import BatteryStatus
-from weconnect.elements.lv_battery_status import LVBatteryStatus
-from weconnect.elements.battery_support_status import BatterySupportStatus
-from weconnect.elements.capability_status import CapabilityStatus
-from weconnect.elements.charging_status import ChargingStatus
-from weconnect.elements.charging_settings import ChargingSettings
-from weconnect.elements.charging_care_settings import ChargingCareSettings
-from weconnect.elements.charge_mode import ChargeMode
-from weconnect.elements.climatization_status import ClimatizationStatus
-from weconnect.elements.climatization_settings import ClimatizationSettings
-from weconnect.elements.climatization_timer import ClimatizationTimer
-from weconnect.elements.departure_timers_status import DepartureTimersStatus
-from weconnect.elements.fuel_level_status import FuelLevelStatus
-from weconnect.elements.lights_status import LightsStatus
-from weconnect.elements.maintenance_status import MaintenanceStatus
-from weconnect.elements.warning_lights_status import WarningLightsStatus
-from weconnect.elements.parking_position import ParkingPosition
-from weconnect.elements.plug_status import PlugStatus
-from weconnect.elements.range_status import RangeStatus
-from weconnect.elements.window_heating_status import WindowHeatingStatus
-from weconnect.elements.odometer_measurement import OdometerMeasurement
-from weconnect.elements.range_measurements import RangeMeasurements
-from weconnect.elements.readiness_status import ReadinessStatus
-from weconnect.elements.temperature_battery_status import TemperatureBatteryStatus
-from weconnect.elements.temperature_outside_status import TemperatureOutsideStatus
-from weconnect.elements.charging_profiles import ChargingProfiles
-from weconnect.elements.trip import Trip
-from weconnect.errors import APICompatibilityError, RetrievalError, APIError, TooManyRequestsError
-from weconnect.util import toBool
-from weconnect.weconnect_errors import ErrorEventType
-from weconnect.domain import Domain
-from weconnect.elements.error import Error
+    from vw_carnet.weconnect import WeConnect
+from vw_carnet.elements.generic_capability import GenericCapability
+from vw_carnet.elements.generic_request_status import GenericRequestStatus
+from vw_carnet.elements.controls import Controls
+from vw_carnet.elements.access_status import AccessStatus
+from vw_carnet.elements.activeventilation_timer import ActiveVentilationTimer
+from vw_carnet.elements.auxiliaryheating_timer import AuxiliaryHeatingTimer
+from vw_carnet.elements.auxiliaryheating_status import AuxiliaryHeatingStatus
+from vw_carnet.elements.battery_status import BatteryStatus
+from vw_carnet.elements.lv_battery_status import LVBatteryStatus
+from vw_carnet.elements.battery_support_status import BatterySupportStatus
+from vw_carnet.elements.capability_status import CapabilityStatus
+from vw_carnet.elements.charging_status import ChargingStatus
+from vw_carnet.elements.charging_settings import ChargingSettings
+from vw_carnet.elements.charging_care_settings import ChargingCareSettings
+from vw_carnet.elements.charge_mode import ChargeMode
+from vw_carnet.elements.climatization_status import ClimatizationStatus
+from vw_carnet.elements.climatization_settings import ClimatizationSettings
+from vw_carnet.elements.climatization_timer import ClimatizationTimer
+from vw_carnet.elements.departure_timers_status import DepartureTimersStatus
+from vw_carnet.elements.fuel_level_status import FuelLevelStatus
+from vw_carnet.elements.lights_status import LightsStatus
+from vw_carnet.elements.maintenance_status import MaintenanceStatus
+from vw_carnet.elements.warning_lights_status import WarningLightsStatus
+from vw_carnet.elements.parking_position import ParkingPosition
+from vw_carnet.elements.plug_status import PlugStatus
+from vw_carnet.elements.range_status import RangeStatus
+from vw_carnet.elements.window_heating_status import WindowHeatingStatus
+from vw_carnet.elements.odometer_measurement import OdometerMeasurement
+from vw_carnet.elements.range_measurements import RangeMeasurements
+from vw_carnet.elements.readiness_status import ReadinessStatus
+from vw_carnet.elements.temperature_battery_status import TemperatureBatteryStatus
+from vw_carnet.elements.temperature_outside_status import TemperatureOutsideStatus
+from vw_carnet.elements.charging_profiles import ChargingProfiles
+from vw_carnet.elements.trip import Trip
+from vw_carnet.errors import APICompatibilityError, RetrievalError, APIError, TooManyRequestsError
+from vw_carnet.util import toBool
+from vw_carnet.weconnect_errors import ErrorEventType
+from vw_carnet.domain import Domain
+from vw_carnet.elements.error import Error
 
-from weconnect.elements.helpers.request_tracker import RequestTracker
+from vw_carnet.elements.helpers.request_tracker import RequestTracker
 
 SUPPORT_IMAGES = False
 try:

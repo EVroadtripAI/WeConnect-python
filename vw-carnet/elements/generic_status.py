@@ -6,12 +6,12 @@ import logging
 from datetime import datetime, timedelta, timezone
 
 if TYPE_CHECKING:
-    from weconnect.elements.vehicle import Vehicle
+    from vw_carnet.elements.vehicle import Vehicle
 
-from weconnect.util import robustTimeParse
-from weconnect.addressable import AddressableObject, AddressableAttribute, AddressableList, AddressableDict
-from weconnect.elements.control_operation import Operation
-from weconnect.elements.error import Error
+from vw_carnet.util import robustTimeParse
+from vw_carnet.addressable import AddressableObject, AddressableAttribute, AddressableList, AddressableDict
+from vw_carnet.elements.control_operation import Operation
+from vw_carnet.elements.error import Error
 
 LOG: logging.Logger = logging.getLogger("weconnect")
 

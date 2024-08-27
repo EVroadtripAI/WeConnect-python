@@ -1,4 +1,4 @@
-from weconnect.elements.climatization_timer import ClimatizationTimer
+from vw_carnet.elements.climatization_timer import ClimatizationTimer
 
 
 class AuxiliaryHeatingTimer(ClimatizationTimer):

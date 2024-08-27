@@ -7,7 +7,7 @@ import time as timemodule
 from datetime import datetime, timezone, time
 from enum import Enum, IntEnum, Flag, auto
 
-from weconnect.util import toBool, robustTimeParse, ExtendedWithNullEncoder
+from vw_carnet.util import toBool, robustTimeParse, ExtendedWithNullEncoder
 
 SUPPORT_IMAGES = False
 try:
@@ -18,7 +18,7 @@ except ImportError:
 
 SUPPORT_ASCII_IMAGES = False
 try:
-    from weconnect.util import imgToASCIIArt, ASCIIModes  # pylint: disable=ungrouped-imports
+    from vw_carnet.util import imgToASCIIArt, ASCIIModes  # pylint: disable=ungrouped-imports
     SUPPORT_ASCII_IMAGES = True
 except ImportError:
     pass

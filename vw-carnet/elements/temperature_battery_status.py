@@ -1,8 +1,8 @@
 import logging
 
-from weconnect.addressable import AddressableAttribute
-from weconnect.elements.generic_status import GenericStatus
-from weconnect.util import kelvinToCelsius
+from vw_carnet.addressable import AddressableAttribute
+from vw_carnet.elements.generic_status import GenericStatus
+from vw_carnet.util import kelvinToCelsius
 
 LOG = logging.getLogger("weconnect")
 
